@@ -7,7 +7,7 @@
     "apicversion": "2.1.0.36",
     "shortdescr": "Monitors atomic counters and creates artifacts in Phantom logging events.",
     "signature": 1492,
-    "iconfile": "phantom.png"
+    "iconfile": "phantom.png",
     "permissions": ["admin"],
     "userinfo": {"username": "admin", "role": "admin"},
     "api": []
