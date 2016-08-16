@@ -1,0 +1,14 @@
+{
+    "appid": "12b32637954347dabeeb0fb708816169",
+    "name": "atomic counters",
+    "vendor": "World Wide Technology, Inc.",
+    "version": "1.0",
+    "interimversion": "(1a)",
+    "apicversion": "2.1.0.36",
+    "shortdescr": "Monitors atomic counters and creates artifacts in Phantom logging events.",
+    "signature": 1492,
+    "iconfile": "phantom.png"
+    "permissions": ["admin"],
+    "userinfo": {"username": "admin", "role": "admin"},
+    "api": []
+}
