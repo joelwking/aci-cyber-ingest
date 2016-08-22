@@ -1,4 +1,5 @@
 *.txt
 *.pyc
-Service/atomic_counters_constants.py
-Service/AnsibleACI.py
+Service/atomic_counters_constants.*
+Service/AnsibleACI.*
+Service/PhantomIngest.*

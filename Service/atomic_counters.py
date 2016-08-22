@@ -2,30 +2,40 @@
 """
 Usage:
 
-   atomic_counters.py   
+    atomic_counters.py   
 
-   use CTRL + c to exit!
+        use CTRL + c to exit!
 
-   Copyright (c) 2016 World Wide Technology, Inc.
-   All rights reserved.
+    This module monitors the atomic counters configured on an ACI fabric and generates a security incident 
+    in Phantom (phantom.us) when the matches on a couter exceeds a threshold.
 
-   author: joel.king@wwt.com
+    Copyright (c) 2016 World Wide Technology, Inc.
+    All rights reserved.
 
-   Revision history:
-     27 July 2016  |  1.0 - initial relese
-      3 Aug  2016  |  1.1 - main logic complete
-     10 Aug  2016  |  1.2 - basic functionality complete
+    author: joel.king@wwt.com
+
+    Requirements:
+        This module references two additional WWT developed modules, PhantomIngest and AnsibleACI. 
+        These imported modules facilitate communication with the REST APIs for Phantom and APIC.
+        Both modules are published on my GitHub account,  https://github.com/joelwking
+
+
+    Revision history:
+      27 July 2016  |  1.0 - initial relese
+       3 Aug  2016  |  1.1 - main logic complete
+      10 Aug  2016  |  1.2 - basic functionality complete
+      22 Aug  2016  |  1.3 - modifications for running on APIC rather than VM  Flint
 
 """
 
-#  IMPORTS
-
+#  SYSTEM IMPORTS
 import sys
 import time
 import json
 import signal
 import requests
 
+#  LOCAL IMPORTS
 import AnsibleACI as aci
 import PhantomIngest as ingest
 
@@ -33,12 +43,12 @@ import PhantomIngest as ingest
 SLEEP_RETRY = 10
 SLEEP_NORMAL = 60
 
-# GLOBALS
+#  GLOBALS
 counter_array = []
 
 #  CLASSES
 class Counter(object):
-    " "
+    "This object maintains the state of the various counters we are watching"
 
     def __init__(self):                               
         " "
@@ -55,11 +65,6 @@ class Counter(object):
                 print "KeyError populating instance variable %s" % key
                 return False
         return True
-
-    def threshold_exceeded(self, **kwargs):
-        ""
-
-        raise NotImplementedError
 
 
 #  MAIN LOGIC
