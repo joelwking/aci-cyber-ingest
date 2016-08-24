@@ -9,6 +9,6 @@
     "signature": 1492,
     "iconfile": "phantom.png",
     "permissions": ["admin"],
-    "userinfo": {"username": "admin", "role": "admin"},
+    "userinfo": {"username": "kingjoe", "role": "atomic-counters"},
     "api": []
 }

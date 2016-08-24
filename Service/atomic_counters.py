@@ -25,6 +25,7 @@ Usage:
        3 Aug  2016  |  1.1 - main logic complete
       10 Aug  2016  |  1.2 - basic functionality complete
       22 Aug  2016  |  1.3 - modifications for running on APIC rather than VM  Flint
+      23 Aug  2016  |  1.4 - additional mods from testing on simulator
 
 """
 
@@ -99,15 +100,13 @@ def main(params):
 
 def query_atomic_counters(apic, phantom, **kwargs):
     "for the APIC specified, issue a class query and get the counter specified"
-
-    print "\n%s %s, searching %s, for %s" % (time.asctime(), apic.controllername, kwargs["class"], kwargs["counter"])
     
-
     apic.setgeneric_URL("%s://%s/api/node/class/" + kwargs["class"] + ".json")
     ret_code = apic.genericGET()
     assert (ret_code is requests.codes.ok), "Failure to communicate: %s" % ret_code
 
     content = json.loads(apic.get_content())
+    print "\n%s %s, searching %s, for %s, found %s" % (time.asctime(), apic.controllername, kwargs["class"], kwargs["counter"], content["totalCount"])
 
     for managed_object in content["imdata"]:
         if new_mo(managed_object, kwargs):
